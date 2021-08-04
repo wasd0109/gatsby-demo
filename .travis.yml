@@ -16,5 +16,5 @@ script:
   - yarn build
 
 after_success:
-  - yarn install -g firebase-tools
+  - yarn global add firebase-tools
   - firebase deploy --token "$FIREBASE_TOKEN"
