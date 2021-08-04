@@ -15,10 +15,10 @@ install:
 script:
   - yarn build
 
-deploy:
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
-  skip_cleanup: true
-  on:
-    branch: master
+after_success:
+  - yarn global add firebase-cli
+  - firebase deploy --token $FIREBASE_TOKEN
+
+branches:
+  only:
+    - master
