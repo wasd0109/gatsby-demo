@@ -1,0 +1,20 @@
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+  - "node"
+
+cache:
+  directories:
+    - ./node_modules
+
+install:
+  - yarn install --frozen-lockfile
+
+script:
+  - yarn build
+
+after_success:
+  - yarn install -g firebase-tools
+  - firebase deploy --token "$FIREBASE_TOKEN"
